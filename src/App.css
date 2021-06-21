@@ -6,6 +6,7 @@
 .map-section {
   width: 100vw;
   height: 100vh;
+  overflow: hidden;
 }
 
 .location-marker {
@@ -28,4 +29,74 @@
 .loading-spinner h1 {
   margin-top: 40px;
   font-size: 20px;
+}
+
+.location-info {
+  position: absolute;
+  top: 100px;
+  right: 100px;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 400px;
+  border-radius: 20px;
+  min-height: 200px;
+  padding: 20px;
+  text-align: center;
+  font-size: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.location-info ul {
+  list-style: none;
+  text-decoration: none;
+  padding: 0;
+}
+
+.location-info li {
+  padding: 3px;
+  font-size: 15px;
+}
+
+.header {
+  position: fixed;
+  text-align: center;
+  align-items: center;
+  background-color: lightcoral;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 100;
+  width: 100%;
+}
+
+.header h1 {
+  font-size: 20px;
+  text-align: center;
+}
+
+.header-icon {
+  color: red;
+  width: 30px;
+  height: 25px;
+}
+
+@media screen and (max-width: 638px) {
+  .header-icon {
+    color: black;
+  }
+
+  .location-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    top: 70%;
+    width: 150px;
+    height: 100px;
+    min-height: 150px;
+  }
 }

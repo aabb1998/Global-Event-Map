@@ -2,8 +2,11 @@ import React, { useEffect, useState } from 'react';
 import GoogleMapReact from 'google-map-react';
 import LocationMarker from './LocationMarker';
 import axios from 'axios';
+import LocationInfo from './LocationInfo';
 
 export const Map = ({ eventData, center, zoom }) => {
+  const [locationInfo, setLocationInfo] = useState(null);
+
   const markers = eventData.map((event) => {
     if (event.categories[0].id === 8) {
       const coords = {
@@ -11,7 +14,13 @@ export const Map = ({ eventData, center, zoom }) => {
         eventLon: event.geometries[0].coordinates[0],
         id: event,
       };
-      return <LocationMarker lat={coords.eventLat} lng={coords.eventLon} />;
+      return (
+        <LocationMarker
+          lat={coords.eventLat}
+          lng={coords.eventLon}
+          onClick={() => setLocationInfo({ id: event.id, title: event.title })}
+        />
+      );
     }
     return null;
   });
@@ -25,6 +34,7 @@ export const Map = ({ eventData, center, zoom }) => {
       >
         {markers}
       </GoogleMapReact>
+      {locationInfo && <LocationInfo info={locationInfo} />}
     </div>
   );
 };

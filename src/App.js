@@ -2,11 +2,11 @@ import './App.css';
 import React, { useState, useEffect } from 'react';
 import { Map } from './Components/Map';
 import Loader from './Components/Loader';
+import Header from './Components/Header';
 
 function App() {
   const [event, setEvent] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchEvents = async () => {
@@ -26,6 +26,7 @@ function App() {
 
   return (
     <div className="App">
+      <Header />
       {!loading ? <Map eventData={event} /> : <Loader />}
     </div>
   );
