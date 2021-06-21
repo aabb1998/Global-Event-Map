@@ -1,3 +1,31 @@
 * {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
+}
+
+.map-section {
+  width: 100vw;
+  height: 100vh;
+}
+
+.location-marker {
+  font-size: 20px;
+  color: red;
+}
+
+.loading-spinner {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.loading-spinner img {
+  width: 70px;
+}
+
+.loading-spinner h1 {
+  margin-top: 40px;
+  font-size: 20px;
 }
