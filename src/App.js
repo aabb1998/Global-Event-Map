@@ -4,6 +4,7 @@ import { Map } from "./Components/Map";
 import Loader from "./Components/Loader";
 import Header from "./Components/Header";
 import LeftSection from "./Components/LeftSection";
+import RightSection from "./Components/RightSection";
 
 function App() {
 	const [event, setEvent] = useState([]);
@@ -30,6 +31,7 @@ function App() {
 			<Header />
 			{!loading ? <LeftSection /> : null}
 			{!loading ? <Map eventData={event} /> : <Loader />}
+			{!loading ? <RightSection /> : null}
 		</div>
 	);
 }

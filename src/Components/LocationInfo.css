@@ -1,0 +1,54 @@
+.location-info {
+	position: absolute;
+	top: 20px;
+	left: 100px;
+	background-color: rgba(46, 38, 38, 1);
+	color: white;
+	width: 300px;
+	border-radius: 10px;
+	min-height: 150px;
+	padding: 20px;
+	text-align: center;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.location-info span {
+	font-size: 13px;
+}
+
+.location-header {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: space-around !important;
+	width: 200px;
+	margin: 10px;
+}
+
+.location-header {
+	margin-right: 10px;
+}
+
+.location-info ul {
+	list-style-type: none;
+	padding: 0;
+	font-size: 15px;
+}
+
+.location-info ul li img {
+	margin-right: 10px;
+}
+
+.location-info li {
+	list-style: none;
+	margin: 10px;
+}
+
+.info-icon {
+	height: 17px;
+	width: 17px;
+}

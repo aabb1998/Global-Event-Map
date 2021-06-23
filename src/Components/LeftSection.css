@@ -21,6 +21,7 @@
 .event-options img {
 	margin: 10px;
 	width: 25px;
+	height: 25px;
 }
 
 .section-bottom {
@@ -33,4 +34,16 @@
 
 .section-bottom img {
 	margin: 10px;
+}
+
+.event-options img:hover {
+	border-left: 2px solid white;
+	padding-left: 10px;
+	transform: translateX(5px);
+}
+
+.location img:hover {
+	border-left: 2px solid white;
+	padding-left: 10px;
+	transform: translateX(5px);
 }
