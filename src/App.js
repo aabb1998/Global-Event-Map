@@ -1,35 +1,37 @@
-import './App.css';
-import React, { useState, useEffect } from 'react';
-import { Map } from './Components/Map';
-import Loader from './Components/Loader';
-import Header from './Components/Header';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import { Map } from "./Components/Map";
+import Loader from "./Components/Loader";
+import Header from "./Components/Header";
+import LeftSection from "./Components/LeftSection";
 
 function App() {
-  const [event, setEvent] = useState([]);
-  const [loading, setLoading] = useState(false);
+	const [event, setEvent] = useState([]);
+	const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const fetchEvents = async () => {
-      setLoading(true);
-      const res = await fetch(
-        'https://eonet.sci.gsfc.nasa.gov/api/v2.1/events'
-      );
-      const { events } = await res.json();
+	useEffect(() => {
+		const fetchEvents = async () => {
+			setLoading(true);
+			const res = await fetch(
+				"https://eonet.sci.gsfc.nasa.gov/api/v2.1/events"
+			);
+			const { events } = await res.json();
 
-      setEvent(events);
-      setLoading(false);
-    };
-    fetchEvents();
-  }, []);
+			setEvent(events);
+			setLoading(false);
+		};
+		fetchEvents();
+	}, []);
 
-  console.log(event);
+	console.log(event);
 
-  return (
-    <div className="App">
-      <Header />
-      {!loading ? <Map eventData={event} /> : <Loader />}
-    </div>
-  );
+	return (
+		<div className="App">
+			<Header />
+			{!loading ? <LeftSection /> : null}
+			{!loading ? <Map eventData={event} /> : <Loader />}
+		</div>
+	);
 }
 
 export default App;
