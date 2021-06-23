@@ -6,9 +6,10 @@ import LocationInfo from './LocationInfo';
 
 export const Map = ({ eventData, center, zoom }) => {
   const [locationInfo, setLocationInfo] = useState(null);
+  const [eventType, setEventType] = useState(8);
 
   const markers = eventData.map((event) => {
-    if (event.categories[0].id === 8) {
+    if (event.categories[0].id === eventType) {
       const coords = {
         eventLat: event.geometries[0].coordinates[1],
         eventLon: event.geometries[0].coordinates[0],
@@ -25,6 +26,14 @@ export const Map = ({ eventData, center, zoom }) => {
     return null;
   });
 
+  // useEffect(() => {
+  //   if (eventType === 8) {
+  //     console.log('heat');
+  //   } else if (eventType === 10) {
+  //     console.log('Storm');
+  //   }
+  // }, [eventType]);
+
   return (
     <div className="map-section">
       <GoogleMapReact
@@ -35,6 +44,17 @@ export const Map = ({ eventData, center, zoom }) => {
         {markers}
       </GoogleMapReact>
       {locationInfo && <LocationInfo info={locationInfo} />}
+      <div className="button-section">
+        <button className="switch-buttons" onClick={() => setEventType(10)}>
+          Cold
+        </button>
+        <button
+          className="switch-buttons"
+          onClick={() => setLocationInfo(null)}
+        >
+          x
+        </button>
+      </div>
     </div>
   );
 };

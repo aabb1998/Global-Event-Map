@@ -84,6 +84,27 @@
   height: 25px;
 }
 
+.switch-buttons {
+  position: fixed;
+  text-align: center;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  z-index: 100;
+  top: 100px;
+  margin: 10px;
+}
+
+.button-section {
+  display: flex;
+  flex-direction: column;
+  width: 100px;
+  justify-content: space-between;
+}
+
 @media screen and (max-width: 638px) {
   .header-icon {
     color: black;
