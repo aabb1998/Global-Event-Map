@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Righteous&display=swap");
+
 .left-section {
 	background-color: rgba(46, 38, 38, 1);
 	width: 70px;
@@ -5,10 +7,22 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
+	transition: 0.3s;
+	min-width: 70px;
 }
 
 .location {
 	margin-top: 30px;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.location h2 {
+	font-size: 17px;
+	color: white;
+	margin-left: 20px;
 }
 
 .event-options {
@@ -22,6 +36,7 @@
 	margin: 10px;
 	width: 25px;
 	height: 25px;
+	cursor: pointer;
 }
 
 .section-bottom {
@@ -30,20 +45,70 @@
 	justify-content: center;
 	align-items: center;
 	margin-bottom: 20px;
+	width: 25px;
 }
 
 .section-bottom img {
 	margin: 10px;
+	cursor: pointer;
 }
 
 .event-options img:hover {
-	border-left: 2px solid white;
+	border-left: 4px solid white;
 	padding-left: 10px;
 	transform: translateX(5px);
 }
 
 .location img:hover {
-	border-left: 2px solid white;
+	border-left: 4px solid white;
 	padding-left: 10px;
 	transform: translateX(5px);
+}
+
+.location img {
+	cursor: pointer;
+}
+
+.left-section-open {
+	background-color: rgba(46, 38, 38, 1);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 300px;
+	transition: 0.3s;
+	min-width: 70px;
+}
+
+.menu-open-img {
+	width: 25px;
+}
+
+.event {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.event h2 {
+	font-size: 17px;
+	color: white;
+	margin-left: 20px;
+}
+
+.nasa-image-open {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	align-items: center;
+	margin-bottom: 10px;
+}
+
+.nasa-text {
+	font-size: 13px;
+	color: white;
+	margin-left: 20px;
+	font-family: "Righteous", cursive !important;
 }

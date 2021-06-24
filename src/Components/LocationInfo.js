@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import image1 from "../Assets/image 5.png";
 import image2 from "../Assets/image 6.png";
 import image3 from "../Assets/info-xxl.png";
@@ -18,7 +18,7 @@ function LocationInfo({ info }) {
 					<img src={image2} alt="" />
 					{info.title}
 				</li>
-				<li>
+				<li className="location-li">
 					<img className="info-icon" src={image3} alt="" />
 					{info.id}
 				</li>

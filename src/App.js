@@ -9,6 +9,9 @@ import RightSection from "./Components/RightSection";
 function App() {
 	const [event, setEvent] = useState([]);
 	const [loading, setLoading] = useState(false);
+	const [openMenu, setOpenMenu] = useState(false);
+
+	console.log(openMenu);
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -29,7 +32,7 @@ function App() {
 	return (
 		<div className="App">
 			<Header />
-			{!loading ? <LeftSection /> : null}
+			{!loading ? <LeftSection menu={openMenu} /> : null}
 			{!loading ? <Map eventData={event} /> : <Loader />}
 			{!loading ? <RightSection /> : null}
 		</div>

@@ -1,7 +1,25 @@
 .location-info {
 	position: absolute;
 	top: 20px;
-	left: 100px;
+	left: 300px;
+	background-color: rgba(46, 38, 38, 1);
+	color: white;
+	width: 300px;
+	border-radius: 10px;
+	min-height: 150px;
+	padding: 20px;
+	text-align: center;
+	font-size: 12px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.location-info-open {
+	position: absolute;
+	top: 20px;
+	left: 300px;
 	background-color: rgba(46, 38, 38, 1);
 	color: white;
 	width: 300px;
@@ -46,6 +64,9 @@
 .location-info li {
 	list-style: none;
 	margin: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .info-icon {

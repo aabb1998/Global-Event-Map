@@ -4,7 +4,6 @@ import baselineLocalFireDepartment from "@iconify-icons/ic/baseline-local-fire-d
 import thunderstormIcon from "@iconify-icons/ion/thunderstorm";
 
 function LocationMarker({ id, lat, lng, onClick }) {
-	console.log(id);
 	return (
 		<div className="location-marker" onClick={onClick}>
 			{id.categories[0].id === 8 ? (
