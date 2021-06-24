@@ -53,16 +53,17 @@
 	cursor: pointer;
 }
 
-.event-options img:hover {
+.event:hover {
 	border-left: 4px solid white;
 	padding-left: 10px;
 	transform: translateX(5px);
 }
 
-.location img:hover {
+.location:hover {
 	border-left: 4px solid white;
 	padding-left: 10px;
 	transform: translateX(5px);
+	cursor: pointer;
 }
 
 .location img {
@@ -87,9 +88,10 @@
 .event {
 	display: flex;
 	flex-direction: row;
-	justify-content: space-around;
+	justify-content: flex-start;
 	align-items: center;
 	margin-bottom: 10px;
+	cursor: pointer;
 }
 
 .event h2 {
