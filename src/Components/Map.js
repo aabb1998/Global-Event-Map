@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import GoogleMapReact from "google-map-react";
 import LocationMarker from "./LocationMarker";
 import axios from "axios";
 import LocationInfo from "./LocationInfo";
+import { MapContext } from "./MapContext";
 
 export const Map = ({ eventData, center, zoom }) => {
 	const [locationInfo, setLocationInfo] = useState(null);
-	const [eventType, setEventType] = useState(8);
+	const [eventType, setEventType] = useState(8); //default
+	const { eventId, setEventId } = useContext(MapContext);
 
 	const markers = eventData.map((event) => {
-		if (event.categories[0].id === eventType) {
+		if (event.categories[0].id === eventId) {
 			const coords = {
 				eventLat: event.geometries[0].coordinates[1],
 				eventLon: event.geometries[0].coordinates[0],
@@ -20,32 +22,19 @@ export const Map = ({ eventData, center, zoom }) => {
 					lat={coords.eventLat}
 					lng={coords.eventLon}
 					id={coords.id}
+					date={coords.date}
 					onClick={() =>
-						setLocationInfo({ id: event.id, title: event.title })
+						setLocationInfo({
+							id: event.id,
+							title: event.title,
+							date: event.date,
+						})
 					}
 				/>
 			);
 		}
 		return null;
 	});
-
-	const wildfireBtnClick = () => {
-		setEventType(8);
-		setLocationInfo(null);
-	};
-
-	const stormBtnClick = () => {
-		setEventType(10);
-		setLocationInfo(null);
-	};
-
-	// useEffect(() => {
-	//   if (eventType === 8) {
-	//     console.log('heat');
-	//   } else if (eventType === 10) {
-	//     console.log('Storm');
-	//   }
-	// }, [eventType]);
 
 	return (
 		<div className="map-section">

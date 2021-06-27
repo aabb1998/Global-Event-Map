@@ -1,17 +1,18 @@
 import "./App.css";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Map } from "./Components/Map";
 import Loader from "./Components/Loader";
 import Header from "./Components/Header";
 import LeftSection from "./Components/LeftSection";
 import RightSection from "./Components/RightSection";
+import { MapContext } from "./Components/MapContext";
 
 function App() {
 	const [event, setEvent] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [openMenu, setOpenMenu] = useState(false);
-
-	console.log(openMenu);
+	const [eventId, setEventId] = useState(8);
+	const value = 10;
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -27,13 +28,14 @@ function App() {
 		fetchEvents();
 	}, []);
 
-	console.log(event);
-
 	return (
 		<div className="App">
 			<Header />
-			{!loading ? <LeftSection menu={openMenu} /> : null}
-			{!loading ? <Map eventData={event} /> : <Loader />}
+			<MapContext.Provider value={{ eventId, setEventId }}>
+				{!loading ? <LeftSection menu={openMenu} /> : null}
+				{!loading ? <Map eventData={event} /> : <Loader />}
+			</MapContext.Provider>
+
 			{!loading ? <RightSection /> : null}
 		</div>
 	);

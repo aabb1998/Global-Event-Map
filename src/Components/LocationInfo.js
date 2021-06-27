@@ -5,12 +5,12 @@ import image3 from "../Assets/info-xxl.png";
 import "./LocationInfo.css";
 
 function LocationInfo({ info }) {
+	console.log(info);
 	return (
 		<div className="location-info">
 			<div className="location-header">
 				<img src={image1} alt="" />
-				<h2>San Fransisco</h2>
-				<span>USA</span>
+				<h2>{info.title}</h2>
 			</div>
 
 			<ul>
