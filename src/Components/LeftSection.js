@@ -9,13 +9,39 @@ import menuCloseImage from "../Assets/image 14.svg";
 import React, { useEffect, useState, useContext } from "react";
 import { Map } from "./Map";
 import { MapContext } from "./MapContext";
+import { geolocated } from "react-geolocated";
+import { LocationContext } from "./LocationContext";
 
 function LeftSection({ menu }) {
 	const [openMenu, setOpenMenu] = useState(menu);
 	const [currentEvent, setCurrentEvent] = useState(8);
 	const { eventId, setEventId } = useContext(MapContext);
+	const { userLocation, setUserLocation } = useContext(LocationContext);
 
-	console.log(eventId);
+	const getLocation = () => {
+		if (!navigator.geolocation) {
+			console.log("geolocation not supported");
+		} else {
+			console.log("Locating....");
+			navigator.geolocation.getCurrentPosition(
+				(position) => {
+					console.log(position.coords.latitude);
+					console.log(position.coords.longitude);
+					setUserLocation({
+						center: {
+							lat: position.coords.latitude,
+							lng: position.coords.longitude,
+						},
+					});
+				},
+				() => {
+					console.log("Unable to retrieve your location");
+				}
+			);
+		}
+
+		console.log(userLocation);
+	};
 
 	const changeMenu = () => {
 		if (openMenu) {
@@ -26,19 +52,9 @@ function LeftSection({ menu }) {
 		}
 	};
 
-	const wildfireBtnClick = () => {
-		setCurrentEvent(8);
-		console.log("wildfire");
-	};
-
-	const stormBtnClick = () => {
-		setCurrentEvent(10);
-		console.log("storm");
-	};
-
 	return (
 		<div className={openMenu ? "left-section-open" : "left-section"}>
-			<div className="location">
+			<div className="location" onClick={getLocation}>
 				<img src={locationImage} alt="" />
 				{openMenu ? <h2>Use Location</h2> : null}
 			</div>

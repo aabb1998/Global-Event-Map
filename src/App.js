@@ -6,13 +6,22 @@ import Header from "./Components/Header";
 import LeftSection from "./Components/LeftSection";
 import RightSection from "./Components/RightSection";
 import { MapContext } from "./Components/MapContext";
+import { LocationContext } from "./Components/LocationContext";
 
 function App() {
 	const [event, setEvent] = useState([]);
 	const [loading, setLoading] = useState(false);
 	const [openMenu, setOpenMenu] = useState(false);
 	const [eventId, setEventId] = useState(8);
+	const [userLocation, setUserLocation] = useState({
+		center: {
+			lat: "42.3265",
+			lng: "-122.9",
+		},
+	});
 	const value = 10;
+
+	console.log(event);
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -32,8 +41,12 @@ function App() {
 		<div className="App">
 			<Header />
 			<MapContext.Provider value={{ eventId, setEventId }}>
-				{!loading ? <LeftSection menu={openMenu} /> : null}
-				{!loading ? <Map eventData={event} /> : <Loader />}
+				<LocationContext.Provider
+					value={{ userLocation, setUserLocation }}
+				>
+					{!loading ? <LeftSection menu={openMenu} /> : null}
+					{!loading ? <Map eventData={event} /> : <Loader />}
+				</LocationContext.Provider>
 			</MapContext.Provider>
 
 			{!loading ? <RightSection /> : null}

@@ -76,9 +76,9 @@
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	width: 300px;
+	width: 400px;
 	transition: 0.3s;
-	min-width: 70px;
+	min-width: 100px;
 }
 
 .menu-open-img {

@@ -4,14 +4,28 @@ import LocationMarker from "./LocationMarker";
 import axios from "axios";
 import LocationInfo from "./LocationInfo";
 import { MapContext } from "./MapContext";
+import { LocationContext } from "./LocationContext";
 
 export const Map = ({ eventData, center, zoom }) => {
 	const [locationInfo, setLocationInfo] = useState(null);
 	const [eventType, setEventType] = useState(8); //default
 	const { eventId, setEventId } = useContext(MapContext);
+	const { userLocation, setUserLocation } = useContext(LocationContext);
+
+	console.log(userLocation.center);
+	console.log(center.lat);
+
+	useEffect(() => {
+		setLocationInfo(null);
+	}, [eventId]);
+
+	// useEffect(() => {
+	// 	center.lat = userLocation.center.lat;
+	// 	center.lng = userLocation.center.lng;
+	// }, [userLocation]);
 
 	const markers = eventData.map((event) => {
-		if (event.categories[0].id === eventId) {
+		if (event.categories[0].id === eventId && event.id != "EONET_354") {
 			const coords = {
 				eventLat: event.geometries[0].coordinates[1],
 				eventLon: event.geometries[0].coordinates[0],

@@ -16,6 +16,21 @@
 	flex-direction: row;
 }
 
+.wildfire-icon {
+	color: red;
+	font-size: 15px;
+}
+
+.thunder-icon {
+	color: blue;
+	font-size: 15px;
+}
+
+.volcano-icon {
+	color: brown;
+	font-size: 15px;
+}
+
 /*
 .location-marker {
 	font-size: 20px;
