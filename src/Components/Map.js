@@ -12,8 +12,7 @@ export const Map = ({ eventData, center, zoom }) => {
 	const { eventId, setEventId } = useContext(MapContext);
 	const { userLocation, setUserLocation } = useContext(LocationContext);
 
-	console.log(userLocation.center);
-	console.log(center.lat);
+	console.log(center);
 
 	useEffect(() => {
 		setLocationInfo(null);
@@ -25,7 +24,7 @@ export const Map = ({ eventData, center, zoom }) => {
 	// }, [userLocation]);
 
 	const markers = eventData.map((event) => {
-		if (event.categories[0].id === eventId && event.id != "EONET_354") {
+		if (event.categories[0].id === eventId && event.id !== "EONET_354") {
 			const coords = {
 				eventLat: event.geometries[0].coordinates[1],
 				eventLon: event.geometries[0].coordinates[0],
@@ -62,20 +61,6 @@ export const Map = ({ eventData, center, zoom }) => {
 				{markers}
 			</GoogleMapReact>
 			{locationInfo && <LocationInfo info={locationInfo} />}
-			{/* <div className="button-section">
-				<button className="storm-btn" onClick={stormBtnClick}>
-					Storms
-				</button>
-				<button className="wildfire-btn" onClick={wildfireBtnClick}>
-					Wildfire
-				</button>
-				<button
-					className="wildfire-btn"
-					onClick={() => setLocationInfo(null)}
-				>
-					Remove Info
-				</button>
-			</div> */}
 		</div>
 	);
 };
