@@ -11,17 +11,9 @@ export const Map = ({ eventData, center, zoom }) => {
 	const [eventType, setEventType] = useState(8); //default
 	const { eventId, setEventId } = useContext(MapContext);
 	const { userLocation, setUserLocation } = useContext(LocationContext);
+	const [changeLocation, setChangeLocation] = useState(false);
 
-	console.log(center);
-
-	useEffect(() => {
-		setLocationInfo(null);
-	}, [eventId]);
-
-	// useEffect(() => {
-	// 	center.lat = userLocation.center.lat;
-	// 	center.lng = userLocation.center.lng;
-	// }, [userLocation]);
+	useEffect(() => {}, [userLocation]);
 
 	const markers = eventData.map((event) => {
 		if (event.categories[0].id === eventId && event.id !== "EONET_354") {
@@ -49,18 +41,21 @@ export const Map = ({ eventData, center, zoom }) => {
 		return null;
 	});
 
+	console.log({ userLocation });
+
 	return (
 		<div className="map-section">
 			<GoogleMapReact
 				bootstrapURLKeys={{
 					key: "AIzaSyDxhwG8T7H-UblnT1Cw8sQm36LuyZyKTiY",
 				}}
-				defaultCenter={center}
+				defaultCenter={userLocation.center}
 				defaultZoom={zoom}
 			>
 				{markers}
 			</GoogleMapReact>
 			{locationInfo && <LocationInfo info={locationInfo} />}
+			{/* {changeLocation ? newCenter : null} */}
 		</div>
 	);
 };

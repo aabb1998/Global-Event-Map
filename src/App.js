@@ -13,15 +13,15 @@ function App() {
 	const [loading, setLoading] = useState(false);
 	const [openMenu, setOpenMenu] = useState(false);
 	const [eventId, setEventId] = useState(8);
+	const [newLocation, setNewLocation] = useState(false);
 	const [userLocation, setUserLocation] = useState({
 		center: {
-			lat: "42.3265",
-			lng: "-122.9",
+			lat: 42.3265,
+			lng: -122.9,
 		},
 	});
-	const value = 10;
 
-	console.log(event);
+	const value = 10;
 
 	useEffect(() => {
 		const fetchEvents = async () => {
@@ -45,11 +45,15 @@ function App() {
 					value={{ userLocation, setUserLocation }}
 				>
 					{!loading ? <LeftSection menu={openMenu} /> : null}
-					{!loading ? <Map eventData={event} /> : <Loader />}
+					{!loading ? (
+						<Map eventData={event} location={userLocation} />
+					) : (
+						<Loader />
+					)}
 				</LocationContext.Provider>
 			</MapContext.Provider>
 
-			{!loading ? <RightSection /> : null}
+			{/* {!loading ? <RightSection /> : null} */}
 		</div>
 	);
 }
