@@ -13,7 +13,7 @@ export const Map = ({ eventData, center, zoom }) => {
 	const { userLocation, setUserLocation } = useContext(LocationContext);
 	const [changeLocation, setChangeLocation] = useState(false);
 
-	useEffect(() => {}, [userLocation]);
+	useEffect(() => {}, [eventId]);
 
 	const markers = eventData.map((event) => {
 		if (event.categories[0].id === eventId && event.id !== "EONET_354") {
