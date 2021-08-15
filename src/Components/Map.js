@@ -5,6 +5,7 @@ import axios from "axios";
 import LocationInfo from "./LocationInfo";
 import { MapContext } from "./MapContext";
 import { LocationContext } from "./LocationContext";
+require("dotenv").config();
 
 export const Map = ({ eventData, center, zoom }) => {
 	const [locationInfo, setLocationInfo] = useState(null);
@@ -12,6 +13,8 @@ export const Map = ({ eventData, center, zoom }) => {
 	const { eventId, setEventId } = useContext(MapContext);
 	const { userLocation, setUserLocation } = useContext(LocationContext);
 	const [changeLocation, setChangeLocation] = useState(false);
+	const url = process.env.REACT_APP_MAP_KEY;
+	console.log(url);
 
 	useEffect(() => {}, [eventId]);
 
@@ -47,7 +50,7 @@ export const Map = ({ eventData, center, zoom }) => {
 		<div className="map-section">
 			<GoogleMapReact
 				bootstrapURLKeys={{
-					key: "AIzaSyDxhwG8T7H-UblnT1Cw8sQm36LuyZyKTiY",
+					key: url,
 				}}
 				defaultCenter={userLocation.center}
 				defaultZoom={zoom}
